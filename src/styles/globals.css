@@ -1,0 +1,1133 @@
+/* ============================================================================
+   VoiceScribe Landing Page - Global Styles
+   Based on iOS 17+ Design System
+   ============================================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   CSS CUSTOM PROPERTIES (Design Tokens as CSS Variables)
+   These can be swapped/overridden for theming
+   ============================================================================ */
+:root {
+  /* === Primary Colors === */
+  --color-primary: #007AFF;
+  --color-primary-dark: #0051D5;
+  --color-primary-light: #66B2FF;
+  
+  /* === Secondary Colors === */
+  --color-secondary: #5856D6;
+  --color-secondary-dark: #3634A3;
+  --color-secondary-light: #8E8CE8;
+  
+  /* === Accent Colors === */
+  --color-accent-red: #FF3B30;
+  --color-accent-green: #34C759;
+  --color-accent-orange: #FF9500;
+  --color-accent-yellow: #FFCC00;
+  --color-accent-blue: #64D2FF;
+  
+  /* === Surface Colors === */
+  --color-surface-primary: #FFFFFF;
+  --color-surface-secondary: #F2F2F7;
+  
+  /* === Text Colors === */
+  --color-text-primary: #000000;
+  --color-text-secondary: #3C3C43;
+  --color-text-tertiary: #8E8E93;
+  
+  /* === Border & Separator === */
+  --color-border: #E5E5EA;
+  --color-separator: #C6C6C8;
+  
+  /* === Shadows === */
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 30px -5px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 2px 8px -2px rgba(0, 0, 0, 0.08), 0 4px 16px -4px rgba(0, 0, 0, 0.06);
+  
+  /* === Typography === */
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+  
+  /* === Spacing === */
+  --space-section: 6rem;
+  --space-section-mobile: 4rem;
+  
+  /* === Border Radius === */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+  
+  /* === Transitions === */
+  --transition-fast: 150ms ease-out;
+  --transition-base: 200ms ease-out;
+  --transition-slow: 300ms ease-out;
+}
+
+/* Dark mode variables */
+.dark {
+  --color-surface-primary: #000000;
+  --color-surface-secondary: #1C1C1E;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #EBEBF5;
+  --color-text-tertiary: #8E8E93;
+  --color-border: #3A3A3C;
+  --color-separator: #38383A;
+}
+
+/* ============================================================================
+   BASE LAYER
+   ============================================================================ */
+@layer base {
+  /* === HTML & Body === */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-surface-primary text-text-primary;
+    font-family: var(--font-body);
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  }
+
+  /* === Headings === */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 { @apply text-display-lg md:text-display-xl; }
+  h2 { @apply text-display-sm md:text-display; }
+  h3 { @apply text-headline-lg; }
+  h4 { @apply text-headline; }
+  h5 { @apply text-title-lg; }
+  h6 { @apply text-title; }
+
+  /* === Links === */
+  a {
+    @apply text-primary hover:text-primary-dark transition-colors duration-200;
+  }
+
+  /* === Focus Styles === */
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary ring-2 ring-primary/20;
+  }
+
+  /* === Selection === */
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  ::-moz-selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  /* === Scrollbar (WebKit) === */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-secondary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-text-tertiary/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-text-tertiary/50;
+  }
+
+  /* === Reduced Motion === */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ============================================================================
+   COMPONENT LAYER
+   ============================================================================ */
+@layer components {
+  /* ==========================================================================
+     LAYOUT COMPONENTS
+     ========================================================================== */
+  
+  /* === Containers === */
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-full {
+    @apply w-full px-4 sm:px-6 lg:px-8;
+  }
+
+  /* === Sections === */
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-lg {
+    @apply py-20 md:py-32;
+  }
+
+  .section-sm {
+    @apply py-12 md:py-16;
+  }
+
+  .section-alt {
+    @apply section bg-surface-secondary;
+  }
+
+  /* === Skip Link (WCAG 2.1 AA compliant) === */
+  .skip-to-content {
+    @apply fixed -top-full left-4 z-[9999] bg-primary text-white px-6 py-3 rounded-xl font-semibold;
+    @apply shadow-lg border-2 border-white;
+    @apply focus:top-4 focus:outline-none focus:ring-4 focus:ring-white/50;
+    @apply transition-all duration-200;
+  }
+
+  /* === Focus trap for modals/menus === */
+  .focus-trap {
+    @apply outline-none;
+  }
+
+  /* === Visually hidden but accessible === */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ==========================================================================
+     BUTTON COMPONENTS
+     ========================================================================== */
+  
+  /* === Base Button === */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-6 py-3 rounded-xl font-semibold text-base;
+    @apply transition-all duration-200 ease-out;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none;
+    @apply select-none whitespace-nowrap;
+  }
+
+  /* === Button Sizes === */
+  .btn-xs {
+    @apply px-3 py-1.5 text-caption rounded-lg gap-1;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-body-sm rounded-lg gap-1.5;
+  }
+
+  .btn-md {
+    @apply px-6 py-3 text-base rounded-xl gap-2;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-body-lg rounded-xl gap-2.5;
+  }
+
+  .btn-xl {
+    @apply px-10 py-5 text-title rounded-2xl gap-3;
+  }
+
+  /* === Primary Button === */
+  .btn-primary {
+    @apply btn bg-primary-600 text-white;
+    @apply hover:bg-primary-700 hover:shadow-button-hover;
+    @apply active:scale-[0.98] active:shadow-button;
+    @apply focus-visible:ring-primary;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* === Secondary Button === */
+  .btn-secondary {
+    @apply btn bg-secondary text-white;
+    @apply hover:bg-secondary-dark hover:shadow-button-hover;
+    @apply active:scale-[0.98];
+    @apply focus-visible:ring-secondary;
+  }
+
+  /* === Outline Button === */
+  .btn-outline {
+    @apply btn border-2 border-primary text-primary bg-transparent;
+    @apply hover:bg-primary hover:text-white;
+    @apply active:scale-[0.98];
+    @apply focus-visible:ring-primary;
+  }
+
+  .btn-outline-secondary {
+    @apply btn border-2 border-secondary text-secondary bg-transparent;
+    @apply hover:bg-secondary hover:text-white;
+    @apply active:scale-[0.98];
+    @apply focus-visible:ring-secondary;
+  }
+
+  .btn-outline-white {
+    @apply btn border-2 border-white text-white bg-transparent;
+    @apply hover:bg-white hover:text-primary;
+    @apply active:scale-[0.98];
+    @apply focus-visible:ring-white;
+  }
+
+  /* === Ghost Button === */
+  .btn-ghost {
+    @apply btn text-text-secondary bg-transparent;
+    @apply hover:text-text-primary hover:bg-surface-secondary;
+    @apply active:scale-[0.98];
+    @apply focus-visible:ring-text-tertiary;
+  }
+
+  .btn-ghost-primary {
+    @apply btn text-primary bg-transparent;
+    @apply hover:bg-primary/10;
+    @apply active:scale-[0.98];
+    @apply focus-visible:ring-primary;
+  }
+
+  /* === Soft Button (Tinted background) === */
+  .btn-soft {
+    @apply btn bg-primary/10 text-primary;
+    @apply hover:bg-primary/20;
+    @apply active:scale-[0.98];
+    @apply focus-visible:ring-primary;
+  }
+
+  .btn-soft-success {
+    @apply btn bg-accent-green/10 text-accent-green;
+    @apply hover:bg-accent-green/20;
+    @apply focus-visible:ring-accent-green;
+  }
+
+  .btn-soft-warning {
+    @apply btn bg-accent-orange/10 text-accent-orange;
+    @apply hover:bg-accent-orange/20;
+    @apply focus-visible:ring-accent-orange;
+  }
+
+  .btn-soft-error {
+    @apply btn bg-accent-red/10 text-accent-red;
+    @apply hover:bg-accent-red/20;
+    @apply focus-visible:ring-accent-red;
+  }
+
+  /* === Gradient Button === */
+  .btn-gradient {
+    @apply btn text-white bg-gradient-primary;
+    @apply hover:shadow-glow hover:scale-[1.02];
+    @apply active:scale-[0.98];
+    @apply focus-visible:ring-primary;
+  }
+
+  /* === Icon Button === */
+  .btn-icon {
+    @apply inline-flex items-center justify-center;
+    @apply w-10 h-10 rounded-xl;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+
+  .btn-icon-sm {
+    @apply w-8 h-8 rounded-lg;
+  }
+
+  .btn-icon-lg {
+    @apply w-12 h-12 rounded-xl;
+  }
+
+  /* === App Store Button === */
+  .btn-app-store {
+    @apply btn bg-black text-white px-5 py-3;
+    @apply hover:bg-gray-800 hover:shadow-medium;
+    @apply active:scale-[0.98];
+    @apply focus-visible:ring-gray-600;
+  }
+
+  /* ==========================================================================
+     CARD COMPONENTS
+     ========================================================================== */
+  
+  /* === Base Card === */
+  .card {
+    @apply bg-white rounded-2xl p-6;
+    @apply border border-border/50;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* === Card Variants === */
+  .card-elevated {
+    @apply card border-0;
+    box-shadow: var(--shadow-medium);
+  }
+
+  .card-outlined {
+    @apply bg-transparent rounded-2xl p-6;
+    @apply border-2 border-border;
+  }
+
+  .card-filled {
+    @apply bg-surface-secondary rounded-2xl p-6;
+    @apply border-0 shadow-none;
+  }
+
+  /* === Interactive Cards === */
+  .card-hover {
+    @apply card transition-all duration-300;
+    @apply hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  .card-interactive {
+    @apply card-hover cursor-pointer;
+    @apply focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+    @apply active:scale-[0.99];
+  }
+
+  .card-pressable {
+    @apply card cursor-pointer transition-all duration-200;
+    @apply hover:shadow-medium active:scale-[0.98] active:shadow-soft;
+  }
+
+  /* === Card Sizes === */
+  .card-sm {
+    @apply p-4 rounded-xl;
+  }
+
+  .card-lg {
+    @apply p-8 rounded-3xl;
+  }
+
+  .card-xl {
+    @apply p-10 rounded-4xl;
+  }
+
+  /* === Feature Card === */
+  .card-feature {
+    @apply card-hover;
+    @apply flex flex-col items-start gap-4;
+  }
+
+  .card-feature-icon {
+    @apply w-12 h-12 rounded-xl bg-primary/10 text-primary;
+    @apply flex items-center justify-center;
+  }
+
+  /* === Pricing Card === */
+  .card-pricing {
+    @apply card-elevated text-center;
+    @apply flex flex-col;
+  }
+
+  .card-pricing-featured {
+    @apply card-pricing relative;
+    @apply border-2 border-primary;
+    @apply before:absolute before:-top-4 before:left-1/2 before:-translate-x-1/2;
+    @apply before:bg-primary before:text-white before:px-4 before:py-1;
+    @apply before:rounded-full before:text-sm before:font-medium;
+    @apply before:content-['Most_Popular'];
+  }
+
+  /* === Glass Card === */
+  .card-glass {
+    @apply rounded-2xl p-6;
+    @apply bg-white/70 backdrop-blur-lg;
+    @apply border border-white/20;
+    @apply shadow-soft;
+  }
+
+  .card-glass-dark {
+    @apply rounded-2xl p-6;
+    @apply bg-black/50 backdrop-blur-lg;
+    @apply border border-white/10;
+  }
+
+  /* === Gradient Card === */
+  .card-gradient {
+    @apply rounded-2xl p-6;
+    @apply bg-gradient-primary text-white;
+    @apply shadow-glow;
+  }
+
+  /* ==========================================================================
+     FORM COMPONENTS
+     ========================================================================== */
+  
+  /* === Input Base === */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl;
+    @apply bg-surface-secondary text-text-primary;
+    @apply border border-border;
+    @apply placeholder:text-text-tertiary;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20;
+  }
+
+  .input-sm {
+    @apply px-3 py-2 text-body-sm rounded-lg;
+  }
+
+  .input-lg {
+    @apply px-5 py-4 text-body-lg rounded-xl;
+  }
+
+  /* === Select === */
+  .select {
+    @apply input appearance-none cursor-pointer;
+    @apply bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20stroke%3D%22%238E8E93%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%20d%3D%22m6%208%204%204%204-4%22%2F%3E%3C%2Fsvg%3E')];
+    @apply bg-[length:1.25rem_1.25rem] bg-[right_0.75rem_center] bg-no-repeat;
+    @apply pr-10;
+  }
+
+  /* === Textarea === */
+  .textarea {
+    @apply input min-h-[120px] resize-y;
+  }
+
+  /* ==========================================================================
+     BADGE COMPONENTS
+     ========================================================================== */
+  
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full;
+    @apply text-caption font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary/10 text-primary-700;
+  }
+
+  .badge-secondary {
+    @apply badge bg-secondary/10 text-secondary-700;
+  }
+
+  .badge-success {
+    @apply badge bg-accent-green/10 text-accent-green;
+  }
+
+  .badge-warning {
+    @apply badge bg-accent-orange/10 text-accent-orange;
+  }
+
+  .badge-error {
+    @apply badge bg-accent-red/10 text-accent-red;
+  }
+
+  .badge-neutral {
+    @apply badge bg-surface-secondary text-text-secondary;
+  }
+
+  /* === Pill Badge (larger) === */
+  .pill {
+    @apply badge px-4 py-1.5 text-body-sm;
+  }
+
+  /* ==========================================================================
+     VISUAL COMPONENTS
+     ========================================================================== */
+  
+  /* === Divider === */
+  .divider {
+    @apply border-t border-separator;
+  }
+
+  .divider-vertical {
+    @apply border-l border-separator h-full;
+  }
+
+  /* === Avatar === */
+  .avatar {
+    @apply relative inline-flex items-center justify-center;
+    @apply w-10 h-10 rounded-full bg-surface-secondary;
+    @apply overflow-hidden;
+  }
+
+  .avatar-sm { @apply w-8 h-8; }
+  .avatar-lg { @apply w-12 h-12; }
+  .avatar-xl { @apply w-16 h-16; }
+
+  /* === Glass Effect === */
+  .glass {
+    @apply bg-white/70 backdrop-blur-lg border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-black/50 backdrop-blur-lg border border-white/10;
+  }
+
+  /* === Gradient Text === */
+  .text-gradient {
+    @apply bg-gradient-primary bg-clip-text text-transparent;
+  }
+
+  .text-gradient-secondary {
+    @apply bg-gradient-secondary bg-clip-text text-transparent;
+  }
+
+  /* === Waveform Animation === */
+  .waveform-bar {
+    @apply w-1 bg-primary rounded-full origin-bottom;
+    animation: waveform 1.2s ease-in-out infinite;
+  }
+
+  .waveform-bar:nth-child(1) { animation-delay: 0s; }
+  .waveform-bar:nth-child(2) { animation-delay: 0.1s; }
+  .waveform-bar:nth-child(3) { animation-delay: 0.2s; }
+  .waveform-bar:nth-child(4) { animation-delay: 0.3s; }
+  .waveform-bar:nth-child(5) { animation-delay: 0.4s; }
+  .waveform-bar:nth-child(6) { animation-delay: 0.5s; }
+  .waveform-bar:nth-child(7) { animation-delay: 0.6s; }
+  .waveform-bar:nth-child(8) { animation-delay: 0.7s; }
+
+  /* === Recording Indicator === */
+  .recording-indicator {
+    @apply relative w-3 h-3 rounded-full bg-brand-recording;
+  }
+
+  .recording-indicator::before {
+    content: '';
+    @apply absolute inset-0 rounded-full bg-brand-recording;
+    animation: pulseRing 1.5s ease-out infinite;
+  }
+
+  /* === Pulse Ring Animation (for buttons/indicators) === */
+  .animate-pulse-ring {
+    animation: pulseRing 1.5s ease-out infinite;
+  }
+
+  @keyframes pulseRing {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  /* === Loading Spinner === */
+  .spinner {
+    @apply w-5 h-5 border-2 border-current border-t-transparent rounded-full;
+    animation: spin 0.75s linear infinite;
+  }
+
+  .spinner-sm { @apply w-4 h-4; }
+  .spinner-lg { @apply w-6 h-6; }
+}
+
+/* ============================================================================
+   UTILITY LAYER
+   ============================================================================ */
+@layer utilities {
+  /* === Animation Delays === */
+  .animation-delay-75 { animation-delay: 75ms; }
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-150 { animation-delay: 150ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-700 { animation-delay: 700ms; }
+  .animation-delay-1000 { animation-delay: 1000ms; }
+
+  /* === Stagger Delays (for scroll animations) === */
+  .stagger-1 { transition-delay: 50ms; }
+  .stagger-2 { transition-delay: 100ms; }
+  .stagger-3 { transition-delay: 150ms; }
+  .stagger-4 { transition-delay: 200ms; }
+  .stagger-5 { transition-delay: 250ms; }
+  .stagger-6 { transition-delay: 300ms; }
+  .stagger-7 { transition-delay: 350ms; }
+  .stagger-8 { transition-delay: 400ms; }
+
+  /* === Scroll Snap === */
+  .snap-x-mandatory {
+    scroll-snap-type: x mandatory;
+  }
+
+  .snap-y-mandatory {
+    scroll-snap-type: y mandatory;
+  }
+
+  .snap-start {
+    scroll-snap-align: start;
+  }
+
+  .snap-center {
+    scroll-snap-align: center;
+  }
+
+  /* === RTL Support === */
+  [dir="rtl"] .rtl\:flip {
+    transform: scaleX(-1);
+  }
+
+  [dir="rtl"] .rtl\:space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  /* === Scroll Margin === */
+  .scroll-mt-header {
+    scroll-margin-top: 5rem;
+  }
+
+  .scroll-mt-header-sm {
+    scroll-margin-top: 4rem;
+  }
+
+  /* === Safe Area Insets === */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* === Text Balance === */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* === Hide Scrollbar === */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* === GPU Acceleration === */
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* === Aspect Ratios === */
+  .aspect-phone {
+    aspect-ratio: 9 / 19.5;
+  }
+
+  /* === Line Clamp === */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* === Focus Ring Utilities === */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  .focus-ring-inset {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset;
+  }
+}
+
+/* ============================================================================
+   SCROLL ANIMATIONS (with reduced motion support)
+   ============================================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-on-scroll-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-on-scroll-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-on-scroll-right {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-on-scroll-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .animate-on-scroll-scale {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-on-scroll-scale.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    @apply bg-white text-black;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  .card, .btn {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* ============================================================================
+   RTL (RIGHT-TO-LEFT) SUPPORT
+   Arabic and other RTL languages
+   ============================================================================ */
+
+/* RTL Font Import - IBM Plex Sans Arabic */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+/* === RTL Base Styles === */
+html[dir="rtl"],
+html.rtl {
+  /* Arabic-optimized font stack */
+  font-family: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', 'Tahoma', system-ui, sans-serif;
+  
+  /* Optimize Arabic text rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  
+  /* Slightly larger line height for Arabic */
+  line-height: 1.7;
+}
+
+/* === RTL Typography === */
+html.rtl body {
+  /* Better letter-spacing for Arabic */
+  letter-spacing: 0;
+}
+
+html.rtl h1,
+html.rtl h2,
+html.rtl h3,
+html.rtl h4,
+html.rtl h5,
+html.rtl h6 {
+  font-family: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', system-ui, sans-serif;
+  /* Arabic headings often look better with normal weight */
+  font-weight: 600;
+  letter-spacing: 0;
+  /* Slightly more line height for Arabic */
+  line-height: 1.4;
+}
+
+/* === RTL Layout Mirroring === */
+@layer utilities {
+  /* Directional margins */
+  .rtl\:ms-auto { margin-inline-start: auto; }
+  .rtl\:me-auto { margin-inline-end: auto; }
+  .rtl\:ms-0 { margin-inline-start: 0; }
+  .rtl\:me-0 { margin-inline-end: 0; }
+  
+  /* Directional padding */
+  .rtl\:ps-0 { padding-inline-start: 0; }
+  .rtl\:pe-0 { padding-inline-end: 0; }
+  
+  /* Directional positioning */
+  .rtl\:left-0 { left: 0; right: auto; }
+  .rtl\:right-0 { right: 0; left: auto; }
+  .rtl\:left-auto { left: auto; }
+  .rtl\:right-auto { right: auto; }
+  
+  /* Directional borders */
+  .rtl\:border-l-0 { border-left-width: 0; }
+  .rtl\:border-r-0 { border-right-width: 0; }
+  .rtl\:border-l { border-left-width: 1px; }
+  .rtl\:border-r { border-right-width: 1px; }
+  
+  /* Flex direction */
+  .rtl\:flex-row-reverse { flex-direction: row-reverse; }
+  
+  /* Text alignment */
+  .rtl\:text-right { text-align: right; }
+  .rtl\:text-left { text-align: left; }
+  
+  /* Transform origin */
+  .rtl\:origin-left { transform-origin: left; }
+  .rtl\:origin-right { transform-origin: right; }
+  
+  /* Scale and rotate */
+  .rtl\:scale-x-flip { transform: scaleX(-1); }
+  .rtl\:rotate-180 { transform: rotate(180deg); }
+}
+
+/* === RTL Automatic Mirroring === */
+/* Automatically flip icons and arrows */
+html.rtl .rtl-flip {
+  transform: scaleX(-1);
+}
+
+/* Keep these elements from flipping */
+html.rtl .rtl-preserve {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* Numbers should stay LTR */
+html.rtl .number,
+html.rtl [data-numeric] {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* === RTL Component Overrides === */
+/* Buttons */
+html.rtl .btn {
+  flex-direction: row-reverse;
+}
+
+/* Navigation items */
+html.rtl .nav-item {
+  flex-direction: row-reverse;
+}
+
+/* Cards with icons */
+html.rtl .card-icon {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+/* Lists */
+html.rtl ul,
+html.rtl ol {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+/* Checkmarks and icons in lists */
+html.rtl .list-icon {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Form elements */
+html.rtl input,
+html.rtl textarea,
+html.rtl select {
+  text-align: right;
+}
+
+/* Form labels */
+html.rtl label {
+  text-align: right;
+}
+
+/* Select dropdown arrow */
+html.rtl select {
+  background-position: left 0.75rem center;
+  padding-left: 2.5rem;
+  padding-right: 1rem;
+}
+
+/* Breadcrumbs */
+html.rtl .breadcrumb-separator {
+  transform: scaleX(-1);
+}
+
+/* Progress bars */
+html.rtl .progress-bar {
+  direction: rtl;
+}
+
+/* Sliders and carousels */
+html.rtl .slider-prev {
+  right: auto;
+  left: 0;
+}
+
+html.rtl .slider-next {
+  left: auto;
+  right: 0;
+}
+
+/* === RTL Specific Animations === */
+/* Slide-in from correct direction */
+html.rtl .animate-slide-in-left {
+  animation-name: slideInRight;
+}
+
+html.rtl .animate-slide-in-right {
+  animation-name: slideInLeft;
+}
+
+/* Scroll animations */
+html.rtl .animate-on-scroll-left {
+  transform: translateX(20px);
+}
+
+html.rtl .animate-on-scroll-right {
+  transform: translateX(-20px);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* === RTL Fixes for Common Issues === */
+html.rtl .truncate {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix gradient directions for RTL */
+html.rtl .bg-gradient-to-r {
+  background-image: linear-gradient(to left, var(--tw-gradient-stops));
+}
+
+html.rtl .bg-gradient-to-l {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+/* Fix absolute positioned elements for RTL */
+html.rtl .absolute-left {
+  left: auto;
+  right: 0;
+}
+
+html.rtl .absolute-right {
+  right: auto;
+  left: 0;
+}
+
+/* === Arabic Number Styling === */
+/* Use Eastern Arabic numerals */
+html.rtl .arabic-numerals {
+  font-feature-settings: 'locl';
+}
+
+/* Keep Western numerals for prices */
+html.rtl .price,
+html.rtl .currency,
+html.rtl [data-price] {
+  font-feature-settings: 'tnum';
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* === RTL Spacing Utilities === */
+/* Specific spacing overrides if needed */
+html.rtl .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* === Print RTL Support === */
+@media print {
+  html.rtl {
+    direction: rtl;
+  }
+  
+  html.rtl body {
+    font-family: 'Traditional Arabic', 'Simplified Arabic', serif;
+  }
+}

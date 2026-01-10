@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="120" height="40">
+  <!-- White App Store Badge - Based on Apple's official design -->
+  
+  <!-- Background -->
+  <rect width="120" height="40" rx="6" fill="#ffffff"/>
+  <rect x="0.5" y="0.5" width="119" height="39" rx="5.5" fill="none" stroke="#a6a6a6" stroke-width="1"/>
+  
+  <!-- Apple Logo -->
+  <g fill="#000" transform="translate(8, 8)">
+    <path d="M15.769 13.29c-.021-2.478 2.017-3.662 2.109-3.722-.148-.218-1.17-1.353-2.292-1.632-.969-.269-1.892-.159-2.449-.041-.626.14-1.149.498-1.497.498-.378 0-.836-.478-1.392-.464-1.088.02-2.126.64-2.681 1.588-1.167 2.027-.295 5.056.815 6.711.559.804 1.208 1.69 2.059 1.658.839-.034 1.153-.533 2.164-.533.996 0 1.285.533 2.16.513.897-.013 1.455-.802 1.987-1.614.649-.924.906-1.832.92-1.879-.022-.009-1.746-.678-1.768-2.663zm-1.659-4.888c.433-.54.732-1.264.648-2.002-.634.028-1.432.442-1.888 .971-.401.467-.764 1.24-.672 1.962.713.052 1.453-.362 1.912-.931z"/>
+  </g>
+  
+  <!-- "Download on the" text -->
+  <text x="32" y="14" fill="#000" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="7" font-weight="400">
+    Download on the
+  </text>
+  
+  <!-- "App Store" text -->
+  <text x="32" y="28" fill="#000" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="14" font-weight="600">
+    App Store
+  </text>
+</svg>

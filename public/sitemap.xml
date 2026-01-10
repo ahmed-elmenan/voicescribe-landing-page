@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- 
+    VoiceScribe Sitemap
+    Generated: 2026-01-10
+    
+    Locales:
+    - en-US (default): /
+    - ar-SA (Arabic - Saudi Arabia): /ar-sa/
+    - ar-AE (Arabic - UAE): /ar-ae/
+    - ar-QA (Arabic - Qatar): /ar-qa/
+    - ar-KW (Arabic - Kuwait): /ar-kw/
+    - ar-BH (Arabic - Bahrain): /ar-bh/
+    - ar-OM (Arabic - Oman): /ar-om/
+  -->
+
+  <!-- ================================================================
+       HOMEPAGE - All Localized Versions
+       ================================================================ -->
+  
+  <!-- English (US) - Default -->
+  <url>
+    <loc>https://voicescribe.app/</loc>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://voicescribe.app/" />
+    <xhtml:link rel="alternate" hreflang="ar-sa" href="https://voicescribe.app/ar-sa/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://voicescribe.app/ar-ae/" />
+    <xhtml:link rel="alternate" hreflang="ar-qa" href="https://voicescribe.app/ar-qa/" />
+    <xhtml:link rel="alternate" hreflang="ar-kw" href="https://voicescribe.app/ar-kw/" />
+    <xhtml:link rel="alternate" hreflang="ar-bh" href="https://voicescribe.app/ar-bh/" />
+    <xhtml:link rel="alternate" hreflang="ar-om" href="https://voicescribe.app/ar-om/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voicescribe.app/" />
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Arabic (Saudi Arabia) -->
+  <url>
+    <loc>https://voicescribe.app/ar-sa/</loc>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://voicescribe.app/" />
+    <xhtml:link rel="alternate" hreflang="ar-sa" href="https://voicescribe.app/ar-sa/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://voicescribe.app/ar-ae/" />
+    <xhtml:link rel="alternate" hreflang="ar-qa" href="https://voicescribe.app/ar-qa/" />
+    <xhtml:link rel="alternate" hreflang="ar-kw" href="https://voicescribe.app/ar-kw/" />
+    <xhtml:link rel="alternate" hreflang="ar-bh" href="https://voicescribe.app/ar-bh/" />
+    <xhtml:link rel="alternate" hreflang="ar-om" href="https://voicescribe.app/ar-om/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voicescribe.app/" />
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Arabic (UAE) -->
+  <url>
+    <loc>https://voicescribe.app/ar-ae/</loc>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://voicescribe.app/" />
+    <xhtml:link rel="alternate" hreflang="ar-sa" href="https://voicescribe.app/ar-sa/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://voicescribe.app/ar-ae/" />
+    <xhtml:link rel="alternate" hreflang="ar-qa" href="https://voicescribe.app/ar-qa/" />
+    <xhtml:link rel="alternate" hreflang="ar-kw" href="https://voicescribe.app/ar-kw/" />
+    <xhtml:link rel="alternate" hreflang="ar-bh" href="https://voicescribe.app/ar-bh/" />
+    <xhtml:link rel="alternate" hreflang="ar-om" href="https://voicescribe.app/ar-om/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voicescribe.app/" />
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Arabic (Qatar) -->
+  <url>
+    <loc>https://voicescribe.app/ar-qa/</loc>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://voicescribe.app/" />
+    <xhtml:link rel="alternate" hreflang="ar-sa" href="https://voicescribe.app/ar-sa/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://voicescribe.app/ar-ae/" />
+    <xhtml:link rel="alternate" hreflang="ar-qa" href="https://voicescribe.app/ar-qa/" />
+    <xhtml:link rel="alternate" hreflang="ar-kw" href="https://voicescribe.app/ar-kw/" />
+    <xhtml:link rel="alternate" hreflang="ar-bh" href="https://voicescribe.app/ar-bh/" />
+    <xhtml:link rel="alternate" hreflang="ar-om" href="https://voicescribe.app/ar-om/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voicescribe.app/" />
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Arabic (Kuwait) -->
+  <url>
+    <loc>https://voicescribe.app/ar-kw/</loc>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://voicescribe.app/" />
+    <xhtml:link rel="alternate" hreflang="ar-sa" href="https://voicescribe.app/ar-sa/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://voicescribe.app/ar-ae/" />
+    <xhtml:link rel="alternate" hreflang="ar-qa" href="https://voicescribe.app/ar-qa/" />
+    <xhtml:link rel="alternate" hreflang="ar-kw" href="https://voicescribe.app/ar-kw/" />
+    <xhtml:link rel="alternate" hreflang="ar-bh" href="https://voicescribe.app/ar-bh/" />
+    <xhtml:link rel="alternate" hreflang="ar-om" href="https://voicescribe.app/ar-om/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voicescribe.app/" />
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Arabic (Bahrain) -->
+  <url>
+    <loc>https://voicescribe.app/ar-bh/</loc>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://voicescribe.app/" />
+    <xhtml:link rel="alternate" hreflang="ar-sa" href="https://voicescribe.app/ar-sa/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://voicescribe.app/ar-ae/" />
+    <xhtml:link rel="alternate" hreflang="ar-qa" href="https://voicescribe.app/ar-qa/" />
+    <xhtml:link rel="alternate" hreflang="ar-kw" href="https://voicescribe.app/ar-kw/" />
+    <xhtml:link rel="alternate" hreflang="ar-bh" href="https://voicescribe.app/ar-bh/" />
+    <xhtml:link rel="alternate" hreflang="ar-om" href="https://voicescribe.app/ar-om/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voicescribe.app/" />
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Arabic (Oman) -->
+  <url>
+    <loc>https://voicescribe.app/ar-om/</loc>
+    <xhtml:link rel="alternate" hreflang="en-us" href="https://voicescribe.app/" />
+    <xhtml:link rel="alternate" hreflang="ar-sa" href="https://voicescribe.app/ar-sa/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://voicescribe.app/ar-ae/" />
+    <xhtml:link rel="alternate" hreflang="ar-qa" href="https://voicescribe.app/ar-qa/" />
+    <xhtml:link rel="alternate" hreflang="ar-kw" href="https://voicescribe.app/ar-kw/" />
+    <xhtml:link rel="alternate" hreflang="ar-bh" href="https://voicescribe.app/ar-bh/" />
+    <xhtml:link rel="alternate" hreflang="ar-om" href="https://voicescribe.app/ar-om/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voicescribe.app/" />
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ================================================================
+       LEGAL PAGES
+       ================================================================ -->
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://voicescribe.app/privacy/</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://voicescribe.app/terms/</loc>
+    <lastmod>2026-01-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>

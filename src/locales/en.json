@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "title": "VoiceScribe — AI Voice to Text App for iPhone | Record & Transcribe",
+    "description": "Turn any audio into accurate text in seconds. Record voice memos, transcribe YouTube videos, and sync everything to the cloud. Free on the App Store.",
+    "keywords": "voice to text app iphone, audio to text transcription app, transcribe youtube video to text, ai transcription app ios, record and transcribe notes, cloud sync transcription app"
+  },
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "howItWorks": "How It Works",
+    "faq": "FAQ",
+    "download": "Download",
+    "downloadOnAppStore": "Download on App Store",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "skipToContent": "Skip to main content",
+    "home": "Home",
+    "current": "Current"
+  },
+  "hero": {
+    "badge": "AI-Powered Transcription",
+    "title": "Your Voice, Instantly",
+    "titleHighlight": "Transcribed",
+    "subtitle": "Record meetings, lectures, or ideas—get accurate text in seconds. Import YouTube videos too. All synced across your devices.",
+    "cta": "Download Free",
+    "ctaSecondary": "See How It Works",
+    "stats": {
+      "users": "50K+ Users",
+      "rating": "4.8 Rating",
+      "languages": "50+ Languages"
+    }
+  },
+  "features": {
+    "badge": "Powerful Features",
+    "title": "Everything You Need to",
+    "titleHighlight": "Transcribe",
+    "subtitle": "Voice memos or hour-long lectures—VoiceScribe delivers accurate text, fast.",
+    "items": {
+      "recording": {
+        "title": "Studio-Quality Recording",
+        "description": "Capture crystal-clear audio with built-in noise reduction. Perfect for lectures, meetings, and interviews."
+      },
+      "transcription": {
+        "title": "Instant AI Transcription",
+        "description": "Get accurate text in seconds, not hours. Supports 50+ languages with automatic detection."
+      },
+      "youtube": {
+        "title": "YouTube in One Tap",
+        "description": "Paste a link, get the transcript. We use existing captions for speed—AI fills the gaps."
+      },
+      "cloudSync": {
+        "title": "Access Anywhere",
+        "description": "Your recordings and transcripts sync securely across all devices with end-to-end encryption."
+      },
+      "export": {
+        "title": "Export Your Way",
+        "description": "PDF, Word, SRT subtitles, or plain text. Share instantly via email, Messages, or any app."
+      },
+      "organize": {
+        "title": "Find Anything Fast",
+        "description": "Folders, tags, and powerful search. Locate any recording or transcript in seconds."
+      }
+    }
+  },
+  "howItWorks": {
+    "badge": "Simple & Fast",
+    "title": "How It",
+    "titleHighlight": "Works",
+    "subtitle": "Three steps. That's all it takes.",
+    "steps": {
+      "record": {
+        "step": "Step 1",
+        "title": "Record or Import",
+        "description": "Tap to record any audio, or paste a YouTube link. We handle both effortlessly."
+      },
+      "transcribe": {
+        "step": "Step 2",
+        "title": "Watch AI Work",
+        "description": "See your transcript appear in real-time. YouTube links process instantly using available captions."
+      },
+      "organize": {
+        "step": "Step 3",
+        "title": "Edit & Export",
+        "description": "Refine your text, organize into folders, export in your preferred format. Done."
+      }
+    }
+  },
+  "pricing": {
+    "badge": "Simple Pricing",
+    "title": "Choose Your",
+    "titleHighlight": "Plan",
+    "subtitle": "Start free. Upgrade when you need more. Cancel anytime.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "save": "Save 33%",
+    "perMonth": "/month",
+    "perYear": "/year",
+    "currentPlan": "Current Plan",
+    "getStarted": "Get Started",
+    "startTrial": "Start Free Trial",
+    "plans": {
+      "free": {
+        "name": "Basic",
+        "price": "Free",
+        "description": "Great for everyday use",
+        "features": [
+          "60 minutes of transcription/month",
+          "5 YouTube imports/month",
+          "1 GB secure cloud storage",
+          "Export to plain text",
+          "Email support"
+        ]
+      },
+      "premium": {
+        "name": "Premium",
+        "priceMonthly": "$9.99",
+        "priceYearly": "$79.99",
+        "description": "No limits, full control",
+        "features": [
+          "Unlimited transcription",
+          "Unlimited YouTube imports",
+          "Unlimited cloud storage",
+          "Export to PDF, Word, SRT",
+          "Priority support",
+          "Advanced folders & tags"
+        ],
+        "popular": "Most Popular"
+      }
+    },
+    "comparison": {
+      "title": "Compare Plans",
+      "features": {
+        "transcription": "Monthly Transcription",
+        "youtube": "YouTube Imports",
+        "storage": "Cloud Storage",
+        "export": "Export Formats",
+        "support": "Support Level"
+      }
+    }
+  },
+  "faq": {
+    "badge": "Got Questions?",
+    "title": "Frequently Asked",
+    "titleHighlight": "Questions",
+    "subtitle": "Quick answers to help you get started.",
+    "items": [
+      {
+        "question": "What is \"captions-first\" for YouTube?",
+        "answer": "When you paste a YouTube link, we check for existing captions first—they're faster and often more accurate. If none exist, our AI transcribes the audio directly. Both methods deliver great results; captions-first is just quicker."
+      },
+      {
+        "question": "How much can I transcribe for free?",
+        "answer": "The Basic plan includes 60 minutes of AI transcription and 5 YouTube imports per month, plus 1 GB of cloud storage. Local recording is always unlimited. Premium removes all limits—transcribe and import as much as you need."
+      },
+      {
+        "question": "Which languages are supported?",
+        "answer": "Our AI supports 50+ languages: English, Spanish, French, German, Arabic, Mandarin, Japanese, and more. The app auto-detects the language, or you can set it manually for best results."
+      },
+      {
+        "question": "Is my data secure?",
+        "answer": "Yes. All recordings and transcripts are encrypted in transit (TLS 1.3) and at rest (AES-256). Only you can access your data—we never sell, share, or use it to train AI. Delete your account anytime and everything goes with it."
+      },
+      {
+        "question": "How do I upgrade or cancel?",
+        "answer": "Subscribe via the App Store—monthly ($9.99) or yearly ($79.99, save 33%). Cancel anytime in Settings → Apple ID → Subscriptions. You keep Premium access until your billing period ends. No hassle."
+      }
+    ],
+    "moreQuestions": "Still have questions?",
+    "contactUs": "Contact us"
+  },
+  "cta": {
+    "title": "Ready to Stop",
+    "titleHighlight": "Typing?",
+    "subtitle": "Join 50,000+ users who save hours every week with VoiceScribe.",
+    "button": "Download Free on App Store",
+    "noCredit": "No credit card required"
+  },
+  "footer": {
+    "description": "The smartest way to transcribe audio and YouTube videos on your iPhone.",
+    "product": "Product",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "support": "Support",
+    "support": "Support",
+    "legal": "Legal",
+    "company": "Company",
+    "links": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "howItWorks": "How It Works",
+      "faq": "FAQ",
+      "contactUs": "Contact Us",
+      "helpCenter": "Help Center",
+      "reportBug": "Report a Bug",
+      "featureRequest": "Feature Request",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "cookiePolicy": "Cookie Policy",
+      "aboutUs": "About Us",
+      "blog": "Blog",
+      "pressKit": "Press Kit"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "placeholder": "Enter your email",
+      "button": "Subscribe",
+      "privacy": "We respect your privacy."
+    },
+    "social": {
+      "twitter": "Follow us on Twitter",
+      "github": "Follow us on GitHub",
+      "instagram": "Follow us on Instagram",
+      "youtube": "Follow us on YouTube"
+    },
+    "copyright": "© {year} Future Vision Apps. All rights reserved.",
+    "backToTop": "Back to top"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "free": "Free",
+    "premium": "Premium",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "tryAgain": "Try Again",
+    "close": "Close",
+    "open": "Open",
+    "language": "Language",
+    "english": "English",
+    "arabic": "العربية"
+  },
+  "languageToggle": {
+    "label": "Select language",
+    "switchTo": "Switch to {language}"
+  }
+}
