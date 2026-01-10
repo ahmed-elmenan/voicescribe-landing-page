@@ -204,26 +204,27 @@ export function Header() {
             </button>
           </div>
         </nav>
+      </header>
 
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <div
-            className="fixed inset-0 bg-black/50 md:hidden z-40"
-            onClick={() => setIsMobileMenuOpen(false)}
-            aria-hidden="true"
-          />
-        )}
+      {/* Mobile Menu Overlay - Outside header for proper stacking */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 md:hidden z-[60]"
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div
-            id="mobile-menu"
-            className="fixed top-16 left-0 right-0 bottom-0 md:hidden bg-white z-50 overflow-y-auto"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Navigation menu"
-          >
-            <nav className="p-4" aria-label="Mobile navigation">
+      {/* Mobile Menu - Outside header for proper stacking */}
+      {isMobileMenuOpen && (
+        <div
+          id="mobile-menu"
+          className="fixed top-16 left-0 right-0 bottom-0 md:hidden bg-white z-[70] overflow-y-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+        >
+          <nav className="p-4" aria-label="Mobile navigation">
             <ul className="space-y-1" role="menu">
               {navItemsConfig.map((item, index) => (
                 <li key={item.href} role="none">
@@ -309,9 +310,8 @@ export function Header() {
               </div>
             </div>
           </nav>
-          </div>
-        )}
-      </header>
+        </div>
+      )}
     </>
   );
 }
