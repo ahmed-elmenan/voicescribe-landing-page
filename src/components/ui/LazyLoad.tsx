@@ -20,6 +20,8 @@ interface LazyLoadProps {
   keepMounted?: boolean;
   /** Callback when component becomes visible */
   onVisible?: () => void;
+  /** ID attribute for the wrapper (useful for anchor navigation) */
+  id?: string;
 }
 
 /**
@@ -35,6 +37,7 @@ export const LazyLoad = memo(function LazyLoad({
   minHeight,
   keepMounted = true,
   onVisible,
+  id,
 }: LazyLoadProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -75,6 +78,7 @@ export const LazyLoad = memo(function LazyLoad({
   return (
     <div
       ref={ref}
+      id={id}
       className={cn('lazy-load-wrapper', className)}
       style={{ minHeight: minHeight ?? undefined }}
     >

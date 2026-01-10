@@ -219,7 +219,6 @@ export function FAQ() {
 
       <section
         ref={sectionRef}
-        id="faq"
         className="section-alt scroll-mt-header overflow-hidden"
         aria-labelledby="faq-heading"
       >

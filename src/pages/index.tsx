@@ -65,6 +65,8 @@ export default function Home() {
           rootMargin="300px" 
           minHeight="600px"
           placeholder={<LazyLoadPlaceholder height="600px" />}
+          className="scroll-mt-header"
+          id="pricing"
         >
           <Pricing />
         </LazyLoad>
@@ -73,6 +75,8 @@ export default function Home() {
           rootMargin="200px" 
           minHeight="500px"
           placeholder={<LazyLoadPlaceholder height="500px" />}
+          className="scroll-mt-header"
+          id="faq"
         >
           <FAQ />
         </LazyLoad>

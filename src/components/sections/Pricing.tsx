@@ -543,7 +543,6 @@ export function Pricing() {
   return (
     <section 
       ref={sectionRef}
-      id="pricing" 
       className="section scroll-mt-header overflow-hidden" 
       aria-labelledby="pricing-heading"
     >
