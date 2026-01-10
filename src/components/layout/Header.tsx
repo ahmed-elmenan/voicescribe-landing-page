@@ -219,11 +219,10 @@ export function Header() {
         <div
           id="mobile-menu"
           className={cn(
-            'fixed top-16 bottom-0 md:hidden bg-white z-50 transition-transform duration-300 ease-out overflow-y-auto',
-            direction === 'rtl' ? 'right-0 left-0' : 'left-0 right-0',
+            'fixed top-16 left-0 right-0 bottom-0 md:hidden bg-white z-50 transition-all duration-300 ease-out overflow-y-auto',
             isMobileMenuOpen 
-              ? 'translate-x-0' 
-              : direction === 'rtl' ? '-translate-x-full' : 'translate-x-full'
+              ? 'opacity-100 visible' 
+              : 'opacity-0 invisible'
           )}
           role="dialog"
           aria-modal="true"
