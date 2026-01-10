@@ -1,18 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   trailingSlash: true,
   
-  // Image optimization - enable for static export
+  // Image optimization for Vercel
   images: {
-    unoptimized: false,
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
-    // For static export, we need unoptimized images
-    // but we'll handle optimization at build time
-    unoptimized: true,
   },
   
   reactStrictMode: true,

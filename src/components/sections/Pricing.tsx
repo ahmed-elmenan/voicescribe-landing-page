@@ -134,7 +134,7 @@ function BillingToggle({
       <button
         onClick={handleToggle}
         className={cn(
-          'relative w-16 h-8 rounded-full transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
+          'relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
           isYearly ? 'bg-gradient-primary' : 'bg-gray-300'
         )}
         role="switch"
@@ -143,8 +143,8 @@ function BillingToggle({
       >
         <span
           className={cn(
-            'absolute top-1 w-6 h-6 bg-white rounded-full shadow-md transition-transform duration-300',
-            isYearly ? 'translate-x-9' : 'translate-x-1'
+            'absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-transform duration-300',
+            isYearly ? 'translate-x-6' : 'translate-x-0'
           )}
         />
       </button>
