@@ -4,3 +4,4 @@ export { HowItWorks } from './HowItWorks';
 export { Pricing } from './Pricing';
 export { FAQ, faqData } from './FAQ';
 export { CTA } from './CTA';
+export { MultiSpeakerSection, YouTubeSection } from './FeatureShowcase';

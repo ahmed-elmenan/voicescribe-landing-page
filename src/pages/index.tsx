@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import { Layout, Hero, Features, HowItWorks, faqData } from '@/components';
+import { MultiSpeakerSection, YouTubeSection } from '@/components/sections';
 import { LazyLoad, LazyLoadPlaceholder } from '@/components/ui';
 import { SEOHead, getHomePageStructuredData } from '@/lib/seo';
 
@@ -56,6 +57,12 @@ export default function Home() {
         
         {/* Features section - important for SEO */}
         <Features />
+        
+        {/* Multi-Speaker Feature Showcase */}
+        <MultiSpeakerSection />
+        
+        {/* YouTube Transcription Feature Showcase */}
+        <YouTubeSection />
         
         {/* HowItWorks - good for engagement */}
         <HowItWorks />
