@@ -268,114 +268,28 @@ function ParallaxBackground() {
 // ============================================================================
 // DEVICE MOCKUP COMPONENT
 // ============================================================================
-interface DeviceMockupProps {
-  screenshotUrl?: string;
-  screenshotAlt?: string;
-}
-
-function DeviceMockup({ screenshotUrl, screenshotAlt = 'VoiceScribe app screenshot' }: DeviceMockupProps) {
+function DeviceMockup() {
   return (
     <div className="relative">
-      {/* iPhone Frame */}
-      <div className="relative w-[280px] md:w-[320px] lg:w-[340px]">
-        {/* Phone Body */}
-        <div className="relative aspect-[9/19.5] bg-gray-900 rounded-[3rem] p-[3px] shadow-2xl ring-1 ring-white/10">
-          {/* Screen Bezel */}
-          <div className="relative w-full h-full bg-black rounded-[2.8rem] overflow-hidden">
-            {/* Dynamic Island / Notch */}
-            <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-20" />
-
-            {/* Screenshot Slot or Placeholder */}
-            {screenshotUrl ? (
-              <Image
-                src={screenshotUrl}
-                alt={screenshotAlt}
-                fill
-                className="object-cover"
-                priority
-              />
-            ) : (
-              /* App Preview Placeholder */
-              <div className="w-full h-full bg-gradient-to-b from-surface-dark-secondary to-surface-dark-primary flex flex-col">
-                {/* Status Bar */}
-                <div className="flex justify-between items-center px-8 pt-14 pb-2 text-white text-xs font-medium">
-                  <span>9:41</span>
-                  <div className="flex items-center gap-1.5">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z" />
-                    </svg>
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* App Content */}
-                <div className="flex-1 px-5 py-4 flex flex-col">
-                  {/* Live Waveform */}
-                  <div className="flex-1 flex items-center justify-center">
-                    <div className="flex items-end justify-center gap-[3px] h-24">
-                      {[35, 55, 75, 90, 100, 85, 70, 90, 75, 55, 40, 60, 80, 65, 45].map(
-                        (height, i) => (
-                          <div
-                            key={i}
-                            className="w-[3px] bg-gradient-to-t from-primary to-secondary rounded-full waveform-bar"
-                            style={{
-                              height: `${height}%`,
-                              animationDelay: `${i * 0.08}s`,
-                            }}
-                          />
-                        )
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Recording Timer */}
-                  <div className="text-center py-4">
-                    <span className="text-4xl font-bold text-white font-mono tracking-wider">
-                      02:34
-                    </span>
-                    <p className="text-text-dark-tertiary text-sm mt-1">Recording...</p>
-                  </div>
-
-                  {/* Record Button */}
-                  <div className="flex justify-center py-6">
-                    <div className="relative">
-                      {/* Pulse Ring */}
-                      <div className="absolute inset-0 w-20 h-20 bg-brand-recording/30 rounded-full animate-pulse-ring" />
-                      {/* Button */}
-                      <button
-                        className="relative w-20 h-20 bg-brand-recording rounded-full flex items-center justify-center shadow-lg shadow-brand-recording/40"
-                        aria-label="Stop recording"
-                      >
-                        <div className="w-7 h-7 bg-white rounded-md" />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Bottom Indicator */}
-                  <div className="flex justify-center pb-2">
-                    <div className="w-32 h-1 bg-white/30 rounded-full" />
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Side Button Accents */}
-        <div className="absolute left-0 top-28 w-[3px] h-8 bg-gray-800 rounded-l" />
-        <div className="absolute left-0 top-40 w-[3px] h-12 bg-gray-800 rounded-l" />
-        <div className="absolute left-0 top-56 w-[3px] h-12 bg-gray-800 rounded-l" />
-        <div className="absolute right-0 top-36 w-[3px] h-16 bg-gray-800 rounded-r" />
+      {/* Phone Mockup Image */}
+      <div className="relative w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px]">
+        <Image
+          src="/images/mockup_1.png"
+          alt="VoiceScribe app showing recording interface with multi-speaker detection, audio file upload, and YouTube transcription features"
+          width={400}
+          height={820}
+          className="w-full h-auto drop-shadow-2xl"
+          priority
+          quality={90}
+        />
       </div>
 
       {/* Floating Notification Cards */}
-      <div className="absolute -right-4 md:-right-8 top-1/4 animate-float">
-        <div className="bg-white rounded-2xl shadow-card-hover p-4 flex items-center gap-3 border border-border/50">
-          <div className="w-10 h-10 bg-accent-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+      <div className="absolute -right-16 sm:-right-20 md:-right-8 lg:-right-12 top-[15%] sm:top-1/4 animate-float z-10">
+        <div className="bg-white rounded-2xl shadow-card-hover p-3 sm:p-4 flex items-center gap-2 sm:gap-3 border border-border/50">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
             <svg
-              className="w-5 h-5 text-accent-green"
+              className="w-4 h-4 sm:w-5 sm:h-5 text-accent-green"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -389,17 +303,17 @@ function DeviceMockup({ screenshotUrl, screenshotAlt = 'VoiceScribe app screensh
             </svg>
           </div>
           <div>
-            <p className="text-sm font-semibold text-text-primary">Transcribed!</p>
-            <p className="text-xs text-text-secondary">Just now</p>
+            <p className="text-xs sm:text-sm font-semibold text-text-primary">Transcribed!</p>
+            <p className="text-[10px] sm:text-xs text-text-secondary">Just now</p>
           </div>
         </div>
       </div>
 
-      <div className="absolute -left-4 md:-left-8 bottom-1/3 animate-float animation-delay-700">
-        <div className="bg-white rounded-2xl shadow-card-hover p-4 flex items-center gap-3 border border-border/50">
-          <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+      <div className="absolute -left-16 sm:-left-20 md:-left-8 lg:-left-12 bottom-[40%] sm:bottom-1/3 animate-float animation-delay-700 z-10">
+        <div className="bg-white rounded-2xl shadow-card-hover p-3 sm:p-4 flex items-center gap-2 sm:gap-3 border border-border/50">
+          <div className="w-8 h-8 sm:w-10 sm:h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
             <svg
-              className="w-5 h-5 text-primary"
+              className="w-4 h-4 sm:w-5 sm:h-5 text-primary"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -413,8 +327,8 @@ function DeviceMockup({ screenshotUrl, screenshotAlt = 'VoiceScribe app screensh
             </svg>
           </div>
           <div>
-            <p className="text-sm font-semibold text-text-primary">Synced</p>
-            <p className="text-xs text-text-secondary">Cloud backup</p>
+            <p className="text-xs sm:text-sm font-semibold text-text-primary">Synced</p>
+            <p className="text-[10px] sm:text-xs text-text-secondary">Cloud backup</p>
           </div>
         </div>
       </div>
@@ -565,11 +479,7 @@ export function Hero() {
 
           {/* Right Column - Device Mockup */}
           <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-fade-in-up animation-delay-200">
-            <DeviceMockup
-              // Pass screenshot URL when available:
-              // screenshotUrl="/images/app-screenshot.png"
-              // screenshotAlt="VoiceScribe app showing a recording in progress"
-            />
+            <DeviceMockup />
           </div>
         </div>
       </div>
