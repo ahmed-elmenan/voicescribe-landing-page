@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
 import { cn, trackEvent } from '@/lib/utils';
 
@@ -306,19 +307,19 @@ export function FAQ() {
             )}
             style={{ transitionDelay: '600ms' }}
           >
-            <a 
+            <Link 
               href="/privacy" 
               className="text-sm text-text-tertiary hover:text-primary transition-colors"
             >
               Privacy Policy
-            </a>
+            </Link>
             <span className="text-text-quaternary">•</span>
-            <a 
+            <Link 
               href="/terms" 
               className="text-sm text-text-tertiary hover:text-primary transition-colors"
             >
               Terms of Service
-            </a>
+            </Link>
             <span className="text-text-quaternary">•</span>
             <a 
               href="https://apps.apple.com/account/subscriptions" 

@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { navItems, siteConfig } from '@/lib/seo';
 import { cn, trackEvent } from '@/lib/utils';
-import { LanguageToggle } from '@/components/common/LanguageToggle';
 import { useI18n } from '@/lib/i18n';
 
 // Navigation items with icons for mobile (icons and hrefs)
@@ -19,7 +18,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
-  const { t, direction } = useI18n();
+  const { t } = useI18n();
   // Handle scroll for header styling and active section detection
   useEffect(() => {
     const handleScroll = () => {
@@ -151,18 +150,14 @@ export function Header() {
                 >
                   {t(item.labelKey)}
                   {activeSection === item.href && (
-                    <span className={cn(
-                      "absolute bottom-0 w-1 h-1 bg-primary rounded-full",
-                      direction === 'rtl' ? 'right-1/2 translate-x-1/2' : 'left-1/2 -translate-x-1/2'
-                    )} />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
                   )}
                 </Link>
               ))}
             </div>
 
-            {/* CTA Button & Language Toggle */}
+            {/* CTA Button */}
             <div className="hidden md:flex items-center gap-3">
-              <LanguageToggle variant="icon" />
               <Link
                 href={siteConfig.appStoreUrl}
                 onClick={() => trackEvent('header_cta_click')}
@@ -258,10 +253,7 @@ export function Header() {
                     </span>
                     <span className="font-medium">{t(item.labelKey)}</span>
                     {activeSection === item.href && (
-                      <span className={cn(
-                        "text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full",
-                        direction === 'rtl' ? 'mr-auto' : 'ml-auto'
-                      )}>
+                      <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full ml-auto">
                         {t('nav.current')}
                       </span>
                     )}
@@ -270,25 +262,17 @@ export function Header() {
               ))}
             </ul>
 
-            {/* Language Toggle in Mobile */}
-            <div className="mt-4 px-4">
-              <LanguageToggle variant="text" className="w-full justify-center" />
-            </div>
-
             {/* Mobile CTA */}
             <div className="mt-6 pt-6 border-t border-separator">
               <Link
                 href={siteConfig.appStoreUrl}
                 onClick={() => trackEvent('mobile_cta_click')}
-                className={cn(
-                  "btn-primary w-full justify-center text-base py-4",
-                  direction === 'rtl' ? 'flex-row-reverse' : ''
-                )}
+                className="btn-primary w-full justify-center text-base py-4"
                 target="_blank"
                 rel="noopener noreferrer"
                 tabIndex={isMobileMenuOpen ? 0 : -1}
               >
-                <svg className={cn("w-5 h-5", direction === 'rtl' ? 'ml-2' : 'mr-2')} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                 </svg>
                 {t('nav.downloadOnAppStore')}
