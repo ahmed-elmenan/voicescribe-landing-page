@@ -292,16 +292,16 @@ export function YouTubeSection() {
 
       <div className="container-wide relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Column - Phone Mockup */}
+          {/* Left Column - Phone Mockup (shows on mobile too) */}
           <div
             className={cn(
-              'flex justify-center transition-all duration-700',
+              'flex justify-center order-1 lg:order-1 transition-all duration-700',
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
             )}
           >
             <div className="relative">
               {/* Phone Image */}
-              <div className="relative w-[280px] sm:w-[320px] md:w-[360px] lg:w-[380px]">
+              <div className="relative w-[260px] sm:w-[300px] md:w-[340px] lg:w-[380px]">
                 <Image
                   src="/images/youtube_transcription.png"
                   alt="VoiceScribe YouTube transcription feature showing URL input and transcribe button"
@@ -313,31 +313,31 @@ export function YouTubeSection() {
               </div>
 
               {/* Floating Badge - YouTube */}
-              <div className="absolute -right-4 sm:-right-8 md:-right-12 top-1/4 animate-float">
-                <div className="bg-white rounded-2xl shadow-card-hover p-3 sm:p-4 flex items-center gap-2 sm:gap-3 border border-border/50">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-brand-recording/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-brand-recording" viewBox="0 0 24 24" fill="currentColor">
+              <div className="absolute -right-2 sm:-right-6 md:-right-10 lg:-right-12 top-1/4 animate-float z-10">
+                <div className="bg-white rounded-2xl shadow-card-hover p-2.5 sm:p-3 md:p-4 flex items-center gap-2 sm:gap-3 border border-border/50">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-brand-recording/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-brand-recording" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs sm:text-sm font-semibold text-text-primary">YouTube</p>
-                    <p className="text-[10px] sm:text-xs text-text-secondary">Connected</p>
+                    <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-text-primary">YouTube</p>
+                    <p className="text-[9px] sm:text-[10px] md:text-xs text-text-secondary">Connected</p>
                   </div>
                 </div>
               </div>
 
               {/* Floating Badge - Transcription Complete */}
-              <div className="absolute -left-4 sm:-left-8 md:-left-12 bottom-1/3 animate-float animation-delay-700">
-                <div className="bg-white rounded-2xl shadow-card-hover p-3 sm:p-4 flex items-center gap-2 sm:gap-3 border border-border/50">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-accent-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="absolute -left-2 sm:-left-6 md:-left-10 lg:-left-12 bottom-1/3 animate-float animation-delay-700 z-10">
+                <div className="bg-white rounded-2xl shadow-card-hover p-2.5 sm:p-3 md:p-4 flex items-center gap-2 sm:gap-3 border border-border/50">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 bg-accent-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-accent-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs sm:text-sm font-semibold text-text-primary">Complete!</p>
-                    <p className="text-[10px] sm:text-xs text-text-secondary">2 min video</p>
+                    <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-text-primary">Complete!</p>
+                    <p className="text-[9px] sm:text-[10px] md:text-xs text-text-secondary">2 min video</p>
                   </div>
                 </div>
               </div>
@@ -355,7 +355,7 @@ export function YouTubeSection() {
           {/* Right Column - Content */}
           <div
             className={cn(
-              'transition-all duration-700',
+              'order-2 lg:order-2 text-center lg:text-left transition-all duration-700',
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             )}
           >
