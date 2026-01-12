@@ -98,6 +98,10 @@ export default function Document() {
           type="image/svg+xml"
         />
         
+        {/* Preload hero image for faster LCP */}
+        <link rel="preload" as="image" href="/images/mockup_1.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/images/mockup_1.png" type="image/png" />
+        
         {/* Google Analytics 4 */}
         <GA4Script />
         

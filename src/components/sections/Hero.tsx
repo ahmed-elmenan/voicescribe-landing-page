@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { siteConfig } from '@/lib/seo';
 import { trackEvent, prefersReducedMotion } from '@/lib/utils';
 import { AppStoreCTAStacked } from '@/components/common/AppStoreCTA';
+import { imageBlurPlaceholders } from '@/lib/image-placeholders';
 
 // ============================================================================
 // TYPES
@@ -273,15 +274,19 @@ function DeviceMockup() {
     <div className="relative">
       {/* Phone Mockup Image */}
       <div className="relative w-[280px] sm:w-[320px] md:w-[360px] lg:w-[400px]">
-        <Image
-          src="/images/mockup_1.png"
-          alt="VoiceScribe app showing recording interface with multi-speaker detection, audio file upload, and YouTube transcription features"
-          width={400}
-          height={820}
-          className="w-full h-auto drop-shadow-2xl"
-          priority
-          quality={90}
-        />
+        <picture>
+          <source srcSet="/images/mockup_1.webp" type="image/webp" />
+          <Image
+            src="/images/mockup_1.png"
+            alt="VoiceScribe app showing recording interface with multi-speaker detection, audio file upload, and YouTube transcription features"
+            width={800}
+            height={1640}
+            className="w-full h-auto drop-shadow-2xl"
+            priority
+            placeholder="blur"
+            blurDataURL={imageBlurPlaceholders.mockup_1}
+          />
+        </picture>
       </div>
 
       {/* Floating Notification Cards */}

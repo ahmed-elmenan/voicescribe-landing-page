@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { imageBlurPlaceholders } from '@/lib/image-placeholders';
 
 // ============================================================================
 // MULTI-SPEAKER SECTION
@@ -173,14 +174,19 @@ export function MultiSpeakerSection() {
             <div className="relative">
               {/* Phone Image */}
               <div className="relative w-[280px] sm:w-[320px] md:w-[360px] lg:w-[380px]">
-                <Image
-                  src="/images/multi_speakers.png"
-                  alt="VoiceScribe multi-speaker detection showing color-coded conversation between multiple speakers"
-                  width={380}
-                  height={780}
-                  className="w-full h-auto drop-shadow-2xl"
-                  quality={90}
-                />
+                <picture>
+                  <source srcSet="/images/multi_speakers.webp" type="image/webp" />
+                  <Image
+                    src="/images/multi_speakers.png"
+                    alt="VoiceScribe multi-speaker detection showing color-coded conversation between multiple speakers"
+                    width={760}
+                    height={1560}
+                    className="w-full h-auto drop-shadow-2xl"
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={imageBlurPlaceholders.multi_speakers}
+                  />
+                </picture>
               </div>
 
               {/* Floating Badge - Speaker Detected */}
@@ -302,14 +308,19 @@ export function YouTubeSection() {
             <div className="relative">
               {/* Phone Image */}
               <div className="relative w-[260px] sm:w-[300px] md:w-[340px] lg:w-[380px]">
-                <Image
-                  src="/images/youtube_transcription.png"
-                  alt="VoiceScribe YouTube transcription feature showing URL input and transcribe button"
-                  width={380}
-                  height={780}
-                  className="w-full h-auto drop-shadow-2xl"
-                  quality={90}
-                />
+                <picture>
+                  <source srcSet="/images/youtube_transcription.webp" type="image/webp" />
+                  <Image
+                    src="/images/youtube_transcription.png"
+                    alt="VoiceScribe YouTube transcription feature showing URL input and transcribe button"
+                    width={760}
+                    height={1560}
+                    className="w-full h-auto drop-shadow-2xl"
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={imageBlurPlaceholders.youtube_transcription}
+                  />
+                </picture>
               </div>
 
               {/* Floating Badge - YouTube */}
