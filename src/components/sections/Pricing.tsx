@@ -6,10 +6,9 @@ import { siteConfig } from '@/lib/seo';
 import { cn } from '@/lib/utils';
 import { useAnalytics } from '@/lib/analytics';
 
-// Plan definitions with monthly and yearly pricing
+// Plan definitions matching the Flutter app
 type PlanFeature = {
   name: string;
-  value: string | boolean;
   included: boolean;
 };
 
@@ -17,195 +16,137 @@ type Plan = {
   id: string;
   name: string;
   description: string;
-  monthlyPrice: number;
-  yearlyPrice: number;
-  storage: string;
-  minutes: string;
+  price: number;
+  period: string;
+  periodShort: string;
   features: PlanFeature[];
   cta: string;
   highlighted: boolean;
   badge?: string;
+  savings?: string;
 };
 
 const plans: Record<string, Plan> = {
-  basic: {
-    id: 'basic',
-    name: 'Basic',
-    description: 'Perfect for getting started with voice notes',
-    monthlyPrice: 0,
-    yearlyPrice: 0,
-    storage: '~1GB',
-    minutes: '60 min/month',
+  free: {
+    id: 'free',
+    name: 'Free',
+    description: 'Basic voice note recording and transcription',
+    price: 0,
+    period: '',
+    periodShort: '',
     features: [
-      { name: 'Cloud Storage', value: '~1GB', included: true },
-      { name: 'Transcription', value: '60 min/month', included: true },
-      { name: 'Local Recordings', value: 'Unlimited', included: true },
-      { name: 'Basic Organization', value: true, included: true },
-      { name: 'YouTube Import', value: '5/month', included: true },
-      { name: 'Cloud Sync', value: false, included: false },
-      { name: 'Priority Processing', value: false, included: false },
-      { name: 'Export Options', value: 'Basic', included: true },
+      { name: 'Record 3 free voice notes', included: true },
+      { name: 'Maximum 60 minutes total', included: true },
+      { name: 'Basic transcription', included: true },
+      { name: 'Local storage only', included: true },
+      { name: '2 YouTube transcriptions', included: true },
+      { name: 'File uploads', included: false },
+      { name: 'Multi-speaker detection', included: false },
+      { name: 'Cloud sync', included: false },
     ],
     cta: 'Download Free',
     highlighted: false,
   },
-  premium: {
-    id: 'premium',
-    name: 'Premium',
-    description: 'Unlimited power for professionals',
-    monthlyPrice: 9.99,
-    yearlyPrice: 79.99,
-    storage: 'Unlimited',
-    minutes: 'Unlimited',
+  weekly: {
+    id: 'weekly',
+    name: 'Weekly',
+    description: 'Try premium before you commit',
+    price: 2.99,
+    period: '/week',
+    periodShort: 'wk',
     features: [
-      { name: 'Cloud Storage', value: 'Unlimited', included: true },
-      { name: 'Transcription', value: 'Unlimited', included: true },
-      { name: 'Local Recordings', value: 'Unlimited', included: true },
-      { name: 'Advanced Organization', value: true, included: true },
-      { name: 'YouTube Import', value: 'Unlimited', included: true },
-      { name: 'Cloud Sync', value: true, included: true },
-      { name: 'Priority Processing', value: true, included: true },
-      { name: 'Export Options', value: 'All formats', included: true },
+      { name: 'Unlimited voice notes', included: true },
+      { name: 'Up to 60 min per recording', included: true },
+      { name: 'Advanced transcription', included: true },
+      { name: 'Export to multiple formats', included: true },
+      { name: 'YouTube transcription', included: true },
+      { name: 'File uploads transcription', included: true },
+      { name: 'Multi-speaker detection', included: true },
+      { name: 'Cloud sync & backup', included: true },
+      { name: 'AI summary generation', included: true },
+      { name: 'Key insights extraction', included: true },
+      { name: 'Priority support', included: true },
     ],
-    cta: 'Start Free Trial',
+    cta: 'Start Weekly',
+    highlighted: false,
+  },
+  yearly: {
+    id: 'yearly',
+    name: 'Yearly',
+    description: 'Best value – huge savings',
+    price: 98.99,
+    period: '/year',
+    periodShort: 'yr',
+    features: [
+      { name: 'Everything in Weekly', included: true },
+      { name: 'Unlimited recording duration', included: true },
+      { name: 'AI-powered audio enhancement', included: true },
+      { name: 'Advanced search & filtering', included: true },
+      { name: 'Bulk export features', included: true },
+      { name: 'Priority support', included: true },
+      { name: 'Early access to new features', included: true },
+      { name: 'Save over 65% vs weekly', included: true },
+    ],
+    cta: 'Start Yearly',
     highlighted: true,
     badge: 'Best Value',
+    savings: 'Save 65%',
   },
 };
 
-// Comparison table features
+// Comparison table features - 4 columns: Feature, Free, Weekly, Yearly
 const comparisonFeatures = [
   { 
-    category: 'Storage & Limits',
+    category: 'Recording & Storage',
     features: [
-      { name: 'Cloud Storage', basic: '~1GB', premium: 'Unlimited', tooltip: 'Store your recordings in the cloud' },
-      { name: 'Transcription Minutes', basic: '60 min/month', premium: 'Unlimited', tooltip: 'Monthly transcription quota' },
-      { name: 'Local Recordings', basic: 'Unlimited', premium: 'Unlimited', tooltip: 'Store recordings on device' },
+      { name: 'Voice Notes', free: '3 notes', weekly: 'Unlimited', yearly: 'Unlimited' },
+      { name: 'Recording Duration', free: '60 min total', weekly: '60 min/recording', yearly: 'Unlimited' },
+      { name: 'Cloud Storage', free: false, weekly: true, yearly: true },
+      { name: 'Cloud Sync & Backup', free: false, weekly: true, yearly: true },
     ]
   },
   {
-    category: 'Features',
+    category: 'Transcription',
     features: [
-      { name: 'YouTube Import', basic: '5/month', premium: 'Unlimited', tooltip: 'Import and transcribe YouTube videos' },
-      { name: 'Cloud Sync', basic: false, premium: true, tooltip: 'Sync across all your devices' },
-      { name: 'Priority Processing', basic: false, premium: true, tooltip: 'Faster transcription queue' },
-      { name: 'Offline Mode', basic: true, premium: true, tooltip: 'Record without internet' },
+      { name: 'Basic Transcription', free: true, weekly: true, yearly: true },
+      { name: 'Advanced Transcription', free: false, weekly: true, yearly: true },
+      { name: 'Multi-Speaker Detection', free: false, weekly: true, yearly: true },
+      { name: '50+ Languages', free: true, weekly: true, yearly: true },
     ]
   },
   {
-    category: 'Organization',
+    category: 'Import Sources',
     features: [
-      { name: 'Folders & Categories', basic: 'Basic', premium: 'Unlimited', tooltip: 'Organize your recordings' },
-      { name: 'Favorites', basic: true, premium: true, tooltip: 'Mark important notes' },
-      { name: 'Search', basic: 'Basic', premium: 'Full-text', tooltip: 'Search through transcriptions' },
-      { name: 'Tags', basic: false, premium: true, tooltip: 'Add custom tags to recordings' },
+      { name: 'Voice Recording', free: true, weekly: true, yearly: true },
+      { name: 'File Uploads', free: false, weekly: true, yearly: true },
+      { name: 'YouTube Transcription', free: '2 videos', weekly: 'Unlimited', yearly: 'Unlimited' },
     ]
   },
   {
-    category: 'Export & Share',
+    category: 'AI Features',
     features: [
-      { name: 'Export Formats', basic: 'TXT', premium: 'TXT, PDF, DOCX', tooltip: 'Export transcriptions' },
-      { name: 'Share Links', basic: false, premium: true, tooltip: 'Share via link' },
-      { name: 'Clipboard Copy', basic: true, premium: true, tooltip: 'Quick copy to clipboard' },
+      { name: 'AI Summary Generation', free: false, weekly: true, yearly: true },
+      { name: 'Key Insights Extraction', free: false, weekly: true, yearly: true },
+      { name: 'AI Audio Enhancement', free: false, weekly: false, yearly: true },
+    ]
+  },
+  {
+    category: 'Export & Organization',
+    features: [
+      { name: 'Export Formats', free: 'Basic', weekly: 'All formats', yearly: 'All formats' },
+      { name: 'Bulk Export', free: false, weekly: false, yearly: true },
+      { name: 'Advanced Search', free: false, weekly: false, yearly: true },
+      { name: 'Custom Categories', free: false, weekly: true, yearly: true },
+    ]
+  },
+  {
+    category: 'Support',
+    features: [
+      { name: 'Priority Support', free: false, weekly: true, yearly: true },
+      { name: 'Early Access Features', free: false, weekly: true, yearly: true },
     ]
   },
 ];
-
-// Billing toggle component
-function BillingToggle({ 
-  isYearly, 
-  onToggle 
-}: { 
-  isYearly: boolean; 
-  onToggle: (period: 'monthly' | 'yearly') => void;
-}) {
-  const handleToggle = () => {
-    onToggle(isYearly ? 'monthly' : 'yearly');
-  };
-
-  return (
-    <div className="flex items-center justify-center gap-4 mb-12">
-      <span className={cn(
-        'text-sm font-medium transition-colors',
-        !isYearly ? 'text-text-primary' : 'text-text-tertiary'
-      )}>
-        Monthly
-      </span>
-      <button
-        onClick={handleToggle}
-        className={cn(
-          'relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
-          isYearly ? 'bg-gradient-primary' : 'bg-gray-300'
-        )}
-        role="switch"
-        aria-checked={isYearly}
-        aria-label="Toggle yearly billing"
-      >
-        <span
-          className={cn(
-            'absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-transform duration-300',
-            isYearly ? 'translate-x-6' : 'translate-x-0'
-          )}
-        />
-      </button>
-      <span className={cn(
-        'text-sm font-medium transition-colors flex items-center gap-2',
-        isYearly ? 'text-text-primary' : 'text-text-tertiary'
-      )}>
-        Yearly
-        <span className="bg-accent-green text-white text-xs font-bold px-2 py-0.5 rounded-full">
-          Save 33%
-        </span>
-      </span>
-    </div>
-  );
-}
-
-// Price display with animation
-function PriceDisplay({ 
-  plan, 
-  isYearly,
-  isVisible
-}: { 
-  plan: Plan; 
-  isYearly: boolean;
-  isVisible: boolean;
-}) {
-  const price = isYearly ? plan.yearlyPrice : plan.monthlyPrice;
-  const period = plan.monthlyPrice === 0 ? '' : isYearly ? '/year' : '/month';
-  
-  return (
-    <div className="text-center mb-6">
-      <div className="flex items-baseline justify-center gap-1">
-        <span 
-          className={cn(
-            'text-5xl font-bold transition-all duration-500',
-            plan.highlighted ? 'text-white' : 'text-text-primary',
-            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          )}
-        >
-          {price === 0 ? 'Free' : `$${price.toFixed(2)}`}
-        </span>
-        {period && (
-          <span className={cn(
-            'text-body',
-            plan.highlighted ? 'text-white/70' : 'text-text-tertiary'
-          )}>
-            {period}
-          </span>
-        )}
-      </div>
-      {isYearly && plan.monthlyPrice > 0 && (
-        <p className={cn(
-          'text-sm mt-1',
-          plan.highlighted ? 'text-white/60' : 'text-text-tertiary'
-        )}>
-          ${(plan.yearlyPrice / 12).toFixed(2)}/month billed annually
-        </p>
-      )}
-    </div>
-  );
-}
 
 // Feature check/x icon
 function FeatureIcon({ included, highlighted }: { included: boolean; highlighted?: boolean }) {
@@ -241,33 +182,71 @@ function FeatureIcon({ included, highlighted }: { included: boolean; highlighted
   );
 }
 
+// Price display
+function PriceDisplay({ 
+  plan, 
+  isVisible
+}: { 
+  plan: Plan; 
+  isVisible: boolean;
+}) {
+  return (
+    <div className="text-center mb-6">
+      <div className="flex items-baseline justify-center gap-1">
+        <span 
+          className={cn(
+            'text-5xl font-bold transition-all duration-500',
+            plan.highlighted ? 'text-white' : 'text-text-primary',
+            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          )}
+        >
+          {plan.price === 0 ? 'Free' : `$${plan.price.toFixed(2)}`}
+        </span>
+        {plan.period && (
+          <span className={cn(
+            'text-body',
+            plan.highlighted ? 'text-white/70' : 'text-text-tertiary'
+          )}>
+            {plan.period}
+          </span>
+        )}
+      </div>
+      {plan.id === 'yearly' && (
+        <p className={cn(
+          'text-sm mt-1',
+          plan.highlighted ? 'text-white/60' : 'text-text-tertiary'
+        )}>
+          ${(plan.price / 52).toFixed(2)}/week billed annually
+        </p>
+      )}
+    </div>
+  );
+}
+
 // Plan card component
 function PlanCard({ 
   plan, 
-  isYearly, 
   isVisible,
   index,
   onCTAClick
 }: { 
   plan: Plan; 
-  isYearly: boolean;
   isVisible: boolean;
   index: number;
   onCTAClick: (planName: string, planPrice: string, isYearly: boolean) => void;
 }) {
-  const price = isYearly ? plan.yearlyPrice : plan.monthlyPrice;
-  const priceStr = price === 0 ? 'Free' : `$${price.toFixed(2)}`;
+  const priceStr = plan.price === 0 ? 'Free' : `$${plan.price.toFixed(2)}`;
 
   const handleClick = () => {
-    onCTAClick(plan.name, priceStr, isYearly);
+    onCTAClick(plan.name, priceStr, plan.id === 'yearly');
   };
 
   return (
     <article
       className={cn(
-        'relative rounded-3xl p-8 transition-all duration-500',
+        'relative rounded-3xl p-6 md:p-8 transition-all duration-500 flex flex-col',
         plan.highlighted
-          ? 'bg-gradient-primary text-white shadow-glow lg:scale-105'
+          ? 'bg-gradient-primary text-white shadow-glow lg:scale-105 z-10'
           : 'bg-white border border-gray-200 shadow-soft hover:shadow-medium',
         isVisible 
           ? 'opacity-100 translate-y-0' 
@@ -294,7 +273,7 @@ function PlanCard({
       )}
 
       {/* Plan Header */}
-      <div className="text-center mb-6">
+      <div className="text-center mb-4">
         <h3 className={cn(
           'text-2xl font-bold mb-2',
           plan.highlighted ? 'text-white' : 'text-text-primary'
@@ -310,50 +289,20 @@ function PlanCard({
       </div>
 
       {/* Price */}
-      <PriceDisplay plan={plan} isYearly={isYearly} isVisible={isVisible} />
+      <PriceDisplay plan={plan} isVisible={isVisible} />
 
-      {/* Key highlights */}
-      <div className={cn(
-        'flex justify-center gap-4 mb-6 pb-6 border-b',
-        plan.highlighted ? 'border-white/20' : 'border-gray-100'
-      )}>
-        <div className="text-center">
-          <div className={cn(
-            'text-lg font-bold',
-            plan.highlighted ? 'text-white' : 'text-primary'
-          )}>
-            {plan.storage}
-          </div>
-          <div className={cn(
-            'text-xs',
-            plan.highlighted ? 'text-white/60' : 'text-text-tertiary'
-          )}>
-            Storage
-          </div>
+      {/* Savings badge for yearly */}
+      {plan.savings && (
+        <div className="flex justify-center mb-4">
+          <span className="bg-accent-green/20 text-accent-green text-sm font-semibold px-3 py-1 rounded-full">
+            {plan.savings}
+          </span>
         </div>
-        <div className={cn(
-          'w-px',
-          plan.highlighted ? 'bg-white/20' : 'bg-gray-200'
-        )} />
-        <div className="text-center">
-          <div className={cn(
-            'text-lg font-bold',
-            plan.highlighted ? 'text-white' : 'text-primary'
-          )}>
-            {plan.minutes}
-          </div>
-          <div className={cn(
-            'text-xs',
-            plan.highlighted ? 'text-white/60' : 'text-text-tertiary'
-          )}>
-            Transcription
-          </div>
-        </div>
-      </div>
+      )}
 
       {/* Quick features list */}
-      <ul className="space-y-3 mb-8" aria-label={`${plan.name} features`}>
-        {plan.features.slice(0, 6).map((feature) => (
+      <ul className="space-y-2.5 mb-6 flex-grow" aria-label={`${plan.name} features`}>
+        {plan.features.slice(0, 8).map((feature) => (
           <li key={feature.name} className="flex items-center gap-3">
             <FeatureIcon included={feature.included} highlighted={plan.highlighted} />
             <span className={cn(
@@ -362,14 +311,6 @@ function PlanCard({
               feature.included && (plan.highlighted ? 'text-white' : 'text-text-primary')
             )}>
               {feature.name}
-              {typeof feature.value === 'string' && feature.value !== 'Unlimited' && feature.included && (
-                <span className={cn(
-                  'ml-1',
-                  plan.highlighted ? 'text-white/60' : 'text-text-tertiary'
-                )}>
-                  ({feature.value})
-                </span>
-              )}
             </span>
           </li>
         ))}
@@ -380,14 +321,14 @@ function PlanCard({
         href={siteConfig.appStoreUrl}
         onClick={handleClick}
         className={cn(
-          'btn w-full justify-center text-base py-4 font-semibold',
+          'btn w-full justify-center text-base py-4 font-semibold mt-auto',
           plan.highlighted
             ? 'bg-white text-primary hover:bg-gray-100 shadow-md'
             : 'btn-primary'
         )}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`${plan.cta} - ${plan.name} plan at ${priceStr}${isYearly ? ' per year' : ' per month'} (opens App Store)`}
+        aria-label={`${plan.cta} - ${plan.name} plan at ${priceStr}${plan.period} (opens App Store)`}
       >
         {plan.cta}
         <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -395,10 +336,13 @@ function PlanCard({
         </svg>
       </Link>
 
-      {/* App Store note for premium */}
-      {plan.highlighted && (
-        <p className="text-center text-white/50 text-xs mt-3">
-          7-day free trial • Cancel anytime
+      {/* Trial note for paid plans */}
+      {plan.price > 0 && (
+        <p className={cn(
+          'text-center text-xs mt-3',
+          plan.highlighted ? 'text-white/50' : 'text-text-tertiary'
+        )}>
+          Cancel anytime via App Store
         </p>
       )}
     </article>
@@ -419,18 +363,22 @@ function ComparisonTable({ isVisible }: { isVisible: boolean }) {
         Full Feature Comparison
       </h3>
       
-      <div className="overflow-x-auto">
-        <table className="w-full max-w-4xl mx-auto" role="table">
+      <div className="overflow-x-auto -mx-4 px-4">
+        <table className="w-full max-w-5xl mx-auto min-w-[600px]" role="table">
           <thead>
             <tr>
               <th className="text-left py-4 px-4 text-text-secondary font-medium" scope="col">Feature</th>
-              <th className="text-center py-4 px-4 min-w-[140px]" scope="col">
-                <span className="text-text-primary font-semibold">Basic</span>
-                <span className="block text-sm text-text-tertiary font-normal">Free</span>
+              <th className="text-center py-4 px-3 min-w-[100px]" scope="col">
+                <span className="text-text-primary font-semibold">Free</span>
+                <span className="block text-xs text-text-tertiary font-normal mt-0.5">$0</span>
               </th>
-              <th className="text-center py-4 px-4 min-w-[140px] bg-primary/5 rounded-t-xl" scope="col">
-                <span className="text-primary font-semibold">Premium</span>
-                <span className="block text-sm text-text-tertiary font-normal">$9.99/mo</span>
+              <th className="text-center py-4 px-3 min-w-[100px]" scope="col">
+                <span className="text-text-primary font-semibold">Weekly</span>
+                <span className="block text-xs text-text-tertiary font-normal mt-0.5">$2.99/wk</span>
+              </th>
+              <th className="text-center py-4 px-3 min-w-[100px] bg-primary/5 rounded-t-xl" scope="col">
+                <span className="text-primary font-semibold">Yearly</span>
+                <span className="block text-xs text-text-tertiary font-normal mt-0.5">$98.99/yr</span>
               </th>
             </tr>
           </thead>
@@ -439,7 +387,7 @@ function ComparisonTable({ isVisible }: { isVisible: boolean }) {
               <Fragment key={category.category}>
                 <tr>
                   <td 
-                    colSpan={3} 
+                    colSpan={4} 
                     className="pt-6 pb-2 px-4 text-sm font-semibold text-text-secondary uppercase tracking-wider"
                   >
                     {category.category}
@@ -457,47 +405,34 @@ function ComparisonTable({ isVisible }: { isVisible: boolean }) {
                       transitionDuration: '300ms'
                     }}
                   >
-                    <td className="py-4 px-4">
-                      <div className="flex items-center gap-2">
-                        <span className="text-text-primary">{feature.name}</span>
-                        {feature.tooltip && (
-                          <div className="group relative">
-                            <svg 
-                              className="w-4 h-4 text-text-quaternary cursor-help" 
-                              fill="none" 
-                              viewBox="0 0 24 24" 
-                              stroke="currentColor"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
-                              {feature.tooltip}
-                              <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
-                            </div>
-                          </div>
-                        )}
-                      </div>
+                    <td className="py-3 px-4">
+                      <span className="text-text-primary text-sm">{feature.name}</span>
                     </td>
-                    <td className="py-4 px-4 text-center">
-                      {typeof feature.basic === 'boolean' ? (
-                        feature.basic ? (
-                          <FeatureIcon included={true} />
-                        ) : (
-                          <FeatureIcon included={false} />
-                        )
+                    <td className="py-3 px-3 text-center">
+                      {typeof feature.free === 'boolean' ? (
+                        <div className="flex justify-center">
+                          <FeatureIcon included={feature.free} />
+                        </div>
                       ) : (
-                        <span className="text-text-secondary">{feature.basic}</span>
+                        <span className="text-text-secondary text-sm">{feature.free}</span>
                       )}
                     </td>
-                    <td className="py-4 px-4 text-center bg-primary/5">
-                      {typeof feature.premium === 'boolean' ? (
-                        feature.premium ? (
-                          <FeatureIcon included={true} />
-                        ) : (
-                          <FeatureIcon included={false} />
-                        )
+                    <td className="py-3 px-3 text-center">
+                      {typeof feature.weekly === 'boolean' ? (
+                        <div className="flex justify-center">
+                          <FeatureIcon included={feature.weekly} />
+                        </div>
                       ) : (
-                        <span className="text-primary font-medium">{feature.premium}</span>
+                        <span className="text-text-secondary text-sm">{feature.weekly}</span>
+                      )}
+                    </td>
+                    <td className="py-3 px-3 text-center bg-primary/5">
+                      {typeof feature.yearly === 'boolean' ? (
+                        <div className="flex justify-center">
+                          <FeatureIcon included={feature.yearly} />
+                        </div>
+                      ) : (
+                        <span className="text-primary font-medium text-sm">{feature.yearly}</span>
                       )}
                     </td>
                   </tr>
@@ -514,8 +449,7 @@ function ComparisonTable({ isVisible }: { isVisible: boolean }) {
 export function Pricing() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [isYearly, setIsYearly] = useState(true);
-  const { trackPricingToggle, trackPricingCTAClick } = useAnalytics();
+  const { trackPricingCTAClick } = useAnalytics();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -534,11 +468,6 @@ export function Pricing() {
 
     return () => observer.disconnect();
   }, []);
-
-  const handleBillingToggle = (period: 'monthly' | 'yearly') => {
-    trackPricingToggle(period);
-    setIsYearly(period === 'yearly');
-  };
 
   return (
     <section 
@@ -564,38 +493,32 @@ export function Pricing() {
             id="pricing-heading"
             className="text-display-sm md:text-display font-bold text-text-primary mb-4"
           >
-            Start free, upgrade when ready
+            Simple, transparent pricing
           </h2>
           <p className="text-body-lg text-text-secondary max-w-2xl mx-auto">
-            Begin with our generous free plan and unlock unlimited power when you need it.
-            Cancel anytime via the App Store.
+            Start free with basic features. Upgrade to Weekly for full access, 
+            or save 65% with our Yearly plan.
           </p>
         </header>
 
-        {/* Billing Toggle */}
-        <div 
-          className={cn(
-            'transition-all duration-500 delay-100',
-            isVisible ? 'opacity-100' : 'opacity-0'
-          )}
-        >
-          <BillingToggle isYearly={isYearly} onToggle={handleBillingToggle} />
-        </div>
-
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto mb-8">
           <PlanCard 
-            plan={plans.basic} 
-            isYearly={isYearly} 
+            plan={plans.free} 
             isVisible={isVisible}
             index={0}
             onCTAClick={trackPricingCTAClick}
           />
           <PlanCard 
-            plan={plans.premium} 
-            isYearly={isYearly} 
+            plan={plans.weekly} 
             isVisible={isVisible}
             index={1}
+            onCTAClick={trackPricingCTAClick}
+          />
+          <PlanCard 
+            plan={plans.yearly} 
+            isVisible={isVisible}
+            index={2}
             onCTAClick={trackPricingCTAClick}
           />
         </div>
@@ -635,7 +558,7 @@ export function Pricing() {
               <svg className="w-5 h-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              7-day free trial on Premium
+              All subscriptions auto-renew
             </div>
           </div>
         </div>
